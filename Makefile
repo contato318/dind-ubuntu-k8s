@@ -67,11 +67,9 @@ limpa_tela:
 
 .PHONY: build
 send_git: ## Send to git (build, tests and send)
-	make build
 	git pull
-	git add :/ --all
-	git commit -m "$(VERSION)" --all
-	git push
+	make build
+	git add :/ --all && git commit -m "$(VERSION)" --all && git push
 
 
 
