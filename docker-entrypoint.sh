@@ -51,4 +51,14 @@ if [ -n "$GITLAB_ADDRESS" ]; then
       update-ca-certificates
 fi
 
+
+
+#CONFIGURE KUBE_CONFIG
+file_env 'KUBE_CONFIG'
+if [ -n "$KUBE_CONFIG" ]; then
+      mkdir -p $HOME/.kube
+			echo -n $KUBE_CONFIG | base64 -d > $HOME/.kube/config
+fi
+
+
 exec "$@"

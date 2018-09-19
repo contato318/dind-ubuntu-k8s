@@ -48,10 +48,6 @@ RUN docker-compose version
 ###########
 # KUBECTL #
 ###########
-#Example:
-#   mkdir -p $HOME/.kube
-#   echo -n $KUBE_CONFIG | base64 -d > $HOME/.kube/config
-
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
     && chmod +x ./kubectl \
     && mv ./kubectl /usr/local/bin/kubectl

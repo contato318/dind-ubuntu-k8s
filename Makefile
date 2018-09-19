@@ -65,6 +65,10 @@ ajuda: help
 limpa_tela:
 	@clear
 
+.PHONY: exec_bash_env
+exec_bash_env: ## Run bash (container) simulate .env
+	docker run -it --rm --env-file $(CURRENT_DIR)/.env $(CONTEXTO) bash
+
 
 .PHONY: exec_bash_registry
 exec_bash_registry: ## Run bash (container) simulate registry
