@@ -91,7 +91,8 @@ send_git: ## Send to git (build, tests and send)
 
 	git pull
 	make build
-	git add :/ --all && git commit -m "$(VERSION)" --all && git push
+	git add :/ --all && git commit -m "$(VERSION)" --all || echo
+	git push
 
 
 
