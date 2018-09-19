@@ -1,4 +1,4 @@
 # Make
 Makefile
 .version
-.git
+.git*
