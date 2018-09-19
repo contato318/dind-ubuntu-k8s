@@ -65,8 +65,26 @@ ajuda: help
 limpa_tela:
 	@clear
 
-.PHONY: build
+
+.PHONY: exec_bash_registry
+exec_bash_registry: ## Run bash (container) simulate registry
+	docker run -it --rm -e REGISTRY_ADDRESS=https://registry.teste.com $(CONTEXTO) bash
+
+.PHONY: exec_bash_gitlab
+exec_bash_gitlab: ## Run bash (container) simulate gitlab
+	docker run -it --rm -e GITLAB_ADDRESS=https://gitlab.teste.com $(CONTEXTO) bash
+
+.PHONY: exec_bash
+exec_bash: ## Run bash (container)
+	docker run -it --rm  \
+	-e REGISTRY_ADDRESS=registry.teste.com \
+	-e REGISTRY_PORT=5000 \
+	-e GITLAB_ADDRESS=gitlab.teste.com  \
+	$(CONTEXTO) bash
+
+.PHONY: send_git
 send_git: ## Send to git (build, tests and send)
+
 	git pull
 	make build
 	git add :/ --all && git commit -m "$(VERSION)" --all && git push

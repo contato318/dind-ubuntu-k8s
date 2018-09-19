@@ -28,7 +28,7 @@ RUN apt-get update \
 RUN curl -sSL https://get.docker.com/ | sh
 
 # Wrapper docker ninja...
-ADD ./wrapdocker /usr/local/bin/wrapdocker
+COPY ./wrapdocker /usr/local/bin/wrapdocker
 RUN chmod +x /usr/local/bin/wrapdocker
 
 VOLUME /var/lib/docker
@@ -55,3 +55,14 @@ RUN docker-compose version
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
     && chmod +x ./kubectl \
     && mv ./kubectl /usr/local/bin/kubectl
+
+
+
+
+
+
+
+
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+ENTRYPOINT ["docker-entrypoint.sh"]
