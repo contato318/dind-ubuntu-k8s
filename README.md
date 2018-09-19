@@ -4,6 +4,7 @@ dind (docker in docker) + kubectl + python + docker-compose + CA import + batter
 ---
 
 ## Usage
+  0. Fork and clone
   1. Create .env file (root directory)
   2. You can put variables in the .env file:
     ```
@@ -18,4 +19,3 @@ dind (docker in docker) + kubectl + python + docker-compose + CA import + batter
 ---
 
 ## Examples
-  
