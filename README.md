@@ -1,8 +1,6 @@
 # dind-ubuntu-k8s
 dind (docker in docker) + kubectl + python + docker-compose + CA import + batteries ^^ love
 
----
-
 ## Usage
   0. Fork and clone
   1. Create .env file (root directory)
@@ -15,10 +13,6 @@ dind (docker in docker) + kubectl + python + docker-compose + CA import + batter
     GITLAB_ADDRESS=git.acme.com
     GITLAB_PORT=443
 ```
-    
-    
+
+
   3. Run make... :)
-
----
-
-## Examples
