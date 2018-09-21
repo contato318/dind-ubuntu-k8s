@@ -113,7 +113,7 @@ test-git:  ## Git tests
 	@echo ""
 	@$(call msg_warn,"git version...")
 	@sleep 1; docker run --name teste-list-docker-$(CONTEXTO) --rm -it -v /var/run/docker.sock:/var/run/docker.sock $(CONTEXTO) git --version | \
-	  grep -q "grep -q \"Python \" " "&& \
+	  grep -q "git version " && \
 	  echo -e "\t$(GREEN_COLOR)Get git version = OK $(NO_COLOR) " || \
 		echo -e "\t$(RED_COLOR)Get git version = NOK $(NO_COLOR) "
 
