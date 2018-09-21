@@ -32,11 +32,11 @@ file_env() {
 file_env 'REGISTRY_ADDRESS'
 file_env 'REGISTRY_PORT' 443
 if [ -n "$REGISTRY_ADDRESS" ]; then
-			#copy ca
+      #copy ca
       #echo "REGISTRY_ADDRESS $REGISTRY_ADDRESS"
       #echo "REGISTRY_PORT $REGISTRY_PORT"
-      openssl s_client -connect $REGISTRY_ADDRESS:$REGISTRY_PORT -showcerts < /dev/null | openssl x509 -outform PEM > /usr/local/share/ca-certificates/$REGISTRY_ADDRESS.crt
-      update-ca-certificates
+      true|openssl s_client -connect $REGISTRY_ADDRESS:$REGISTRY_PORT 2>/dev/null|openssl x509 > /usr/local/share/ca-certificates/$REGISTRY_ADDRESS.crt
+      update-ca-certificates --fresh >/dev/null
 fi
 
 #############################################
@@ -46,9 +46,9 @@ fi
 file_env 'GITLAB_ADDRESS'
 file_env 'GITLAB_PORT' 443
 if [ -n "$GITLAB_ADDRESS" ]; then
-			#copy ca
-      openssl s_client -connect $GITLAB_ADDRESS:$GITLAB_PORT -showcerts < /dev/null | openssl x509 -outform PEM > /usr/local/share/ca-certificates/$GITLAB_ADDRESS.crt
-      update-ca-certificates
+      #copy ca
+      true|openssl s_client -connect $GITLAB_ADDRESS:$GITLAB_PORT 2>/dev/null|openssl x509 > /usr/local/share/ca-certificates/$GITLAB_ADDRESS.crt
+      update-ca-certificates --fresh >/dev/null
 fi
 
 
@@ -56,7 +56,7 @@ fi
 file_env 'KUBE_CONFIG'
 if [ -n "$KUBE_CONFIG" ]; then
       mkdir -p $HOME/.kube
-			echo -n $KUBE_CONFIG | base64 -d > $HOME/.kube/config
+      echo -n $KUBE_CONFIG | base64 -d > $HOME/.kube/config
 fi
 
 
