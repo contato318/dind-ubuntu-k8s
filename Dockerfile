@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
+LABEL maintainer="Dirceu Silva <docker@dirceusilva.com>"
 
-MAINTAINER Dirceu Silva <docker@dirceusilva.com>
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get install -yq \
