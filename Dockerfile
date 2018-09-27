@@ -1,9 +1,10 @@
 FROM ubuntu:16.04
 
 MAINTAINER Dirceu Silva <docker@dirceusilva.com>
+ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update && apt-get install -y \
-    apt-transport-https \
+RUN apt-get update && apt-get install -yq \
+    apt-transport-https tzdata \
     ca-certificates \
     curl \
     lxc \
@@ -20,7 +21,6 @@ RUN apt-get update \
   && cd /usr/local/bin \
   && ln -s /usr/bin/python3 python \
   && pip3 install --upgrade pip
-
 
 
 
@@ -55,10 +55,7 @@ RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s
     && mv ./kubectl /usr/local/bin/kubectl
 
 
-
-
-
-
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/archive/*.deb
 
 
 COPY docker-entrypoint.sh /usr/local/bin/
