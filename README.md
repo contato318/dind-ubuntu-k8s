@@ -16,3 +16,7 @@ dind (docker in docker) + kubectl + python + docker-compose + CA import + batter
 
 
   3. Run make... :)
+  
+  ## Links
+  
+  - [How to use docker in docker](http://blog.teracy.com/2017/09/11/how-to-use-docker-in-docker-dind-and-docker-outside-of-docker-dood-for-local-ci-testing/) 
